@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		74637D14245F3FEE00DC871F /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74637D13245F3FEE00DC871F /* WebKit.framework */; };
 		748758E4245AD8020032DC43 /* invalid_cert.der in Resources */ = {isa = PBXBuildFile; fileRef = 748758E2245AD8020032DC43 /* invalid_cert.der */; };
 		748758E5245AD8020032DC43 /* valid_cert.der in Resources */ = {isa = PBXBuildFile; fileRef = 748758E3245AD8020032DC43 /* valid_cert.der */; };
-		748758E9245AEBE70032DC43 /* SampleWKWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748758E8245AEBE70032DC43 /* SampleWKWebView.swift */; };
 		A433C0ED224EAF06004FCA90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A433C0EC224EAF06004FCA90 /* AppDelegate.swift */; };
 		A433C0EF224EAF06004FCA90 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A433C0EE224EAF06004FCA90 /* ViewController.swift */; };
 		A433C0F2224EAF06004FCA90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A433C0F0224EAF06004FCA90 /* Main.storyboard */; };
@@ -18,9 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		74637D13245F3FEE00DC871F /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		748758E2245AD8020032DC43 /* invalid_cert.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = invalid_cert.der; sourceTree = "<group>"; };
 		748758E3245AD8020032DC43 /* valid_cert.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = valid_cert.der; sourceTree = "<group>"; };
-		748758E8245AEBE70032DC43 /* SampleWKWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleWKWebView.swift; sourceTree = "<group>"; };
 		A433C0E9224EAF06004FCA90 /* IOSWebViewCertPinning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IOSWebViewCertPinning.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A433C0EC224EAF06004FCA90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A433C0EE224EAF06004FCA90 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -35,12 +35,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74637D14245F3FEE00DC871F /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		74637D12245F3FEE00DC871F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				74637D13245F3FEE00DC871F /* WebKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A433C0E0224EAF06004FCA90 = {
 			isa = PBXGroup;
 			children = (
@@ -48,6 +57,7 @@
 				A433C0EA224EAF06004FCA90 /* Products */,
 				748758E2245AD8020032DC43 /* invalid_cert.der */,
 				748758E3245AD8020032DC43 /* valid_cert.der */,
+				74637D12245F3FEE00DC871F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -68,7 +78,6 @@
 				A433C0F3224EAF09004FCA90 /* Assets.xcassets */,
 				A433C0F5224EAF09004FCA90 /* LaunchScreen.storyboard */,
 				A433C0F8224EAF09004FCA90 /* Info.plist */,
-				748758E8245AEBE70032DC43 /* SampleWKWebView.swift */,
 			);
 			path = IOSWebViewCertPinning;
 			sourceTree = "<group>";
@@ -146,7 +155,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				748758E9245AEBE70032DC43 /* SampleWKWebView.swift in Sources */,
 				A433C0EF224EAF06004FCA90 /* ViewController.swift in Sources */,
 				A433C0ED224EAF06004FCA90 /* AppDelegate.swift in Sources */,
 			);
@@ -297,7 +305,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8XPT93F9Q7;
 				INFOPLIST_FILE = IOSWebViewCertPinning/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -316,7 +324,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8XPT93F9Q7;
 				INFOPLIST_FILE = IOSWebViewCertPinning/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

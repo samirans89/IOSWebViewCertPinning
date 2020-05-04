@@ -2,27 +2,43 @@ import UIKit
 import WebKit
 
 class ViewController: UIViewController, WKNavigationDelegate {
-    var webView: WKWebView!
+    
     var localHTTPSEndpoint = "https://bs-local.com:4443"
+    var bundledSslCert = "invalid_cert"
+    var bundledSslCertExt = "der"
     
-    override func loadView() {
-        webView = SampleWKWebView()
-        
-        webView.navigationDelegate = self
-        view = webView
-        webView.loadHTMLString("<html><h2><p><a href='" + localHTTPSEndpoint + "'/>Go to localhost https </a></p></h2></html>", baseURL: nil);
-    }
     
+    @IBOutlet weak var webViewLoadHTTPS: WKWebView!
+    @IBOutlet weak var textLocalHostEndpoint: UITextField!
+    
+    @IBOutlet weak var buttonReset: UIButton!
+    @IBOutlet weak var textCert: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        webViewLoadHTTPS.navigationDelegate = self
+        textCert.text = bundledSslCert
+        textLocalHostEndpoint.text = localHTTPSEndpoint
+        processResetClick(self)
     }
+    
+    @IBAction func processResetClick(_ sender: Any) {
+        
+        bundledSslCert = textCert.text!;
+        localHTTPSEndpoint = textLocalHostEndpoint.text!
+        
+        webViewLoadHTTPS.loadHTMLString("<html><h2><p><a href='" + localHTTPSEndpoint + "'/>Go to localhost https </a></p></h2></html>", baseURL: nil);
+        
+    }
+    
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         title = webView.title
     }
     
     public func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation){
+        bundledSslCert = textCert.text!;
+        localHTTPSEndpoint = textLocalHostEndpoint.text!
         print("didStartProvisionalNavigation")
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
     }
@@ -40,7 +56,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
                         let data = CFDataGetBytePtr(serverCertificateData);
                         let size = CFDataGetLength(serverCertificateData);
                         let cert1 = NSData(bytes: data, length: size)
-                        let file_der = Bundle.main.path(forResource: "valid_cert", ofType: "der")
+                        let file_der = Bundle.main.path(forResource: bundledSslCert, ofType: bundledSslCertExt)
                         
                         if let file = file_der {
                             if let cert2 = NSData(contentsOfFile: file) {
@@ -67,5 +83,4 @@ class ViewController: UIViewController, WKNavigationDelegate {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
         print("Error 'didFailProvisionalNavigation': \(error.localizedDescription)\nSchema: \(String(describing: webView.url?.absoluteString))")
     }
-
 }
